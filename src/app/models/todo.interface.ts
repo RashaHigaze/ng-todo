@@ -1,7 +1,9 @@
-export interface ITodo{
-    title: string;
-    description :string;
-    isCompleted: boolean;
-    isArchived: boolean;
-    endDate: Date | number | string;
+export interface ITodo {
+  id: number;
+  title: string;
+  description: string;
+  isCompleted: boolean;
+  isArchived: boolean;
+  endDate: Date | number | string;
+  selected: Boolean;
 }
