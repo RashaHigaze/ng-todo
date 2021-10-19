@@ -44,9 +44,20 @@ export class TodoService {
     //add new todo
     //trigger next tic on observable
     console.log(newTodo);
-    const exitistingTodos: Array<ITodo> = this._todoSubject.value;
-    exitistingTodos.push(newTodo);
-    this._todoSubject.next(exitistingTodos);
-    localStorage.setItem('todos', JSON.stringify(exitistingTodos));
+    const existingTodos: Array<ITodo> = this._todoSubject.value;
+    existingTodos.push(newTodo);
+    this._todoSubject.next(existingTodos);
+    localStorage.setItem('todos', JSON.stringify(existingTodos));
+  }
+
+  public onTodoAction(todoId: string, action: string): void {
+    const existingTodos: Array<ITodo> = this._todoSubject.value;
+
+    const todoIndex = existingTodos.findIndex(
+      (singleTodo) => (singleTodo.id = todoId)
+    );
+    existingTodos[todoIndex][action] = true;
+    this._todoSubject.next(existingTodos);
+    localStorage.setItem('todos', JSON.stringify(existingTodos));
   }
 }

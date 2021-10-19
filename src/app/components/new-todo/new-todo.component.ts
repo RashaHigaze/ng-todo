@@ -13,6 +13,8 @@ import { v4 as uuidv4 } from 'uuid';
 export class NewTodoComponent implements OnInit {
   @ViewChild('f') form: NgForm;
 
+  public minDate: Date = new Date()
+  
   constructor(private todoService: TodoService, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
